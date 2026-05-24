@@ -1,0 +1,17 @@
+# Ambiente Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Variáveis de ambiente (credenciais)
+.env
+
+# Banco de dados local
+data/*.db
+data/*.csv
+
+# Streamlit
+.streamlit/secrets.toml
