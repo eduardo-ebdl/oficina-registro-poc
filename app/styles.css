@@ -1,0 +1,401 @@
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --text: #172033;
+    --muted: #657086;
+    --line: #dce3ef;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --success: #0f766e;
+}
+
+/* ── App background ── */
+.stApp {
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 30rem),
+        linear-gradient(180deg, #f8fafc 0%, var(--bg) 42%, #ffffff 100%);
+    color: var(--text);
+}
+
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewContainer"] p,
+[data-testid="stAppViewContainer"] label,
+[data-testid="stAppViewContainer"] span,
+[data-testid="stAppViewContainer"] small,
+[data-testid="stAppViewContainer"] div[data-testid="stMarkdownContainer"] {
+    color: var(--text);
+}
+
+/* ── Sidebar ── */
+section[data-testid="stSidebar"] {
+    background: #0f172a;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section[data-testid="stSidebar"] * {
+    color: #e5edf8;
+}
+
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+    color: #b6c2d6;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"] label {
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    transition: background 160ms ease;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+section[data-testid="stSidebar"] div[data-testid="stMetric"] {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+section[data-testid="stSidebar"] div[data-testid="stMetric"] label,
+section[data-testid="stSidebar"] div[data-testid="stMetricValue"] {
+    color: #e5edf8;
+}
+
+/* ── Layout ── */
+.block-container {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    max-width: 1180px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text);
+    letter-spacing: 0;
+}
+
+h1 {
+    font-size: 2.65rem;
+    line-height: 1.05;
+    margin-bottom: 0.55rem;
+}
+
+h2,
+h3 {
+    margin-top: 0.35rem;
+}
+
+/* ── Metrics ── */
+div[data-testid="stMetric"] {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+div[data-testid="stMetric"] label {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--text);
+    font-size: 1.55rem;
+    font-weight: 800;
+}
+
+/* ── Inputs ── */
+.stTextInput input,
+.stNumberInput input,
+.stDateInput input,
+.stTextArea textarea,
+div[data-baseweb="select"]>div {
+    border-radius: 8px;
+    border-color: var(--line);
+    background: #ffffff;
+    color: var(--text);
+}
+
+.stTextInput input::placeholder,
+.stTextArea textarea::placeholder {
+    color: #8a94a6;
+    opacity: 1;
+}
+
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] input,
+div[data-baseweb="select"] svg,
+.stNumberInput button,
+.stNumberInput button svg {
+    color: var(--text);
+}
+
+/* ── Buttons: default solid accent ── */
+.stButton>button,
+.stDownloadButton>button {
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 700;
+    min-height: 2.75rem;
+    transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.stButton>button:hover,
+.stDownloadButton>button:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.24);
+    transform: translateY(-1px);
+}
+
+/* ── Form submit button: white outlined ── */
+.stFormSubmitButton>button {
+    border-radius: 8px !important;
+    border: 1.5px solid var(--line) !important;
+    background: #ffffff !important;
+    color: var(--text) !important;
+    font-weight: 600 !important;
+    min-height: 2.9rem !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+    transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease !important;
+}
+
+.stFormSubmitButton>button:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.14) !important;
+    transform: translateY(-1px) !important;
+    background: #ffffff !important;
+}
+
+.stButton>button {
+    border-radius: 8px !important;
+    border: 1.5px solid var(--line) !important;
+    background: #ffffff !important;
+    color: var(--text) !important;
+    font-weight: 600 !important;
+    min-height: 2.9rem !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+    transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease !important;
+}
+
+.stButton>button:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.14) !important;
+    transform: translateY(-1px) !important;
+    background: #ffffff !important;
+}
+
+
+.stDownloadButton>button {
+    border-radius: 8px !important;
+    border: 1.5px solid var(--line) !important;
+    background: #ffffff !important;
+    color: var(--text) !important;
+    font-weight: 600 !important;
+    min-height: 2.9rem !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+    transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease !important;
+}
+
+.stDownloadButton>button:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.14) !important;
+    transform: translateY(-1px) !important;
+    background: #ffffff !important;
+}
+
+
+/* ── Hero ── */
+.app-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.55fr);
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0.6rem;
+}
+
+.hero-copy,
+.hero-panel,
+.section-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+    color: var(--text);
+}
+
+.hero-copy {
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-copy p {
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.6;
+    max-width: 760px;
+    margin-bottom: 0.25rem;
+}
+
+.hero-panel {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 170px;
+    border-left: 4px solid rgba(37, 99, 235, 0.12);
+    background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+
+.hero-panel strong {
+    color: var(--text);
+    display: block;
+    font-size: 2.1rem;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.hero-panel span,
+.section-card p,
+.sidebar-caption {
+    color: var(--muted);
+}
+
+.hero-panel .panel-footer {
+    border-top: 1px solid var(--line);
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    color: var(--success);
+    font-weight: 700;
+}
+
+/* ── Section intro card ── */
+.section-card {
+    padding: 1.2rem 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.section-card h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.05rem;
+}
+
+.section-card p {
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+/* ── Form container: white card wrapping all fields ── */
+div[data-testid="stForm"] {
+    background: #ffffff !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 12px !important;
+    padding: 1.75rem !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* ── Column panel titles inside the form ── */
+.form-panel-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.1rem 0;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--line);
+}
+
+/* ── Total estimado ── */
+.total-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    margin-top: 0.75rem;
+}
+
+.total-card__label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+}
+
+.total-card__value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+/* ── Status strip ── */
+.status-strip {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0.75rem 0 1.25rem;
+}
+
+.status-pill {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.75rem 0.85rem;
+    min-height: 4.8rem;
+    color: var(--text);
+}
+
+.status-pill span {
+    color: var(--muted);
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-pill strong {
+    color: var(--text);
+    display: block;
+    font-size: 1.45rem;
+    margin-top: 0.25rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    h1 {
+        font-size: 2.35rem;
+    }
+
+    .app-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .status-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .block-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .status-strip {
+        grid-template-columns: 1fr;
+    }
+}
