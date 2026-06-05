@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 from database import export_ordens_to_csv, fetch_ordens, init_db, insert_ordem
 from ml_utils import predict_valor_total
-from s3_utils import upload_file_to_s3
+from s3_utils import upload_file_to_s3, upload_parquet_to_s3
 from spark_utils import run_spark_curated_pipeline
 import pandas as pd
 import streamlit as st
@@ -492,24 +492,30 @@ def render_exportacao() -> None:
         st.success(f"Cópia local atualizada em {csv_path}")
 
     with col2:
-        st.markdown("#### Envio para AWS S3")
-        st.write("Use esta ação quando quiser disponibilizar o arquivo para a camada analítica.")
-        if st.button("Enviar CSV para S3", use_container_width=True):
-            ok, message = upload_file_to_s3(csv_path)
+        st.markdown("#### Curated com Spark")
+        st.write("Transforme o CSV em Parquet particionado para consumo analítico local.")
+        if st.button("Gerar Curated Spark", use_container_width=True):
+            ok, message, curated_path = run_spark_curated_pipeline(csv_path)
             if ok:
                 st.success(message)
+                st.session_state["curated_path"] = str(curated_path)
             else:
                 st.error(message)
 
     with col3:
-        st.markdown("#### Curated com Spark")
-        st.write("Transforme o CSV em Parquet particionado para consumo analítico local.")
-        if st.button("Gerar Curated Spark", use_container_width=True):
-            ok, message, _ = run_spark_curated_pipeline(csv_path)
+        st.markdown("#### Envio para AWS S3")
+        st.write("Envie o Parquet curated para o S3 após gerar com Spark.")
+        if st.button("Enviar Parquet para S3", use_container_width=True):
+            curated_path = st.session_state.get("curated_path")
+            if not curated_path:
+                from spark_utils import CURATED_DIR
+                curated_path = str(CURATED_DIR)
+            ok, message = upload_parquet_to_s3(curated_path)
             if ok:
                 st.success(message)
             else:
                 st.error(message)
+        st.caption("O CSV bruto ainda pode ser enviado separadamente via linha de comando se necessário.")
 
 
 def main() -> None:
